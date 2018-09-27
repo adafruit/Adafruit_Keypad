@@ -38,29 +38,36 @@ volatile byte *Adafruit_Keypad::getKeyState(byte key)
     return NULL;
 }
 
-void Adafruit_Keypad::read() {
+void Adafruit_Keypad::tick() {
+    uint8_t evt;
     for(int i=0; i<_numRows; i++){
         digitalWrite(_row[i], LOW);
     }
 
-    volatile byte *state = _keystates;
+    int i = 0;
     for(int r=0; r<_numRows; r++){
         digitalWrite(_row[r], HIGH);
         delayMicroseconds(_KEYPAD_SETTLING_DELAY);
         for(int c=0; c<_numCols; c++){
-            byte currentState = *state;
             bool pressed = digitalRead(_col[c]);
             //Serial.print((int)pressed);
+            volatile byte *state = _keystates + i;
+            byte currentState = *state;
             if(pressed && !(currentState & _KEY_PRESSED)){
                 currentState |= (_JUST_PRESSED | _KEY_PRESSED);
-                //TODO: push an event
+                evt = KEY_JUST_PRESSED;
+                _eventbuf.store_char(evt);
+                _eventbuf.store_char(*(_userKeymap + i));
             }
             else if(!pressed && (currentState & _KEY_PRESSED)){
                 currentState |= _JUST_RELEASED;
                 currentState &= ~(_KEY_PRESSED);
-                //TODO: push an event
+                evt = KEY_JUST_RELEASED;
+                _eventbuf.store_char(evt);
+                _eventbuf.store_char(*(_userKeymap + i));
             }
-            *state++ = currentState;
+            *state = currentState;
+            i++;
         }
         //Serial.println("");
         digitalWrite(_row[r], LOW);
@@ -110,4 +117,18 @@ bool Adafruit_Keypad::isPressed(byte key)
 bool Adafruit_Keypad::isReleased(byte key)
 {
     return (*getKeyState(key) & _KEY_PRESSED) == 0;
+}
+
+int Adafruit_Keypad::available()
+{
+    return (_eventbuf.available() >> 1);
+}
+
+keypadEvent Adafruit_Keypad::read()
+{
+    keypadEvent k;
+    k.bit.EVENT = _eventbuf.read_char();
+    k.bit.KEY = _eventbuf.read_char();
+
+    return k;
 }
