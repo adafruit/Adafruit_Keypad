@@ -4,11 +4,16 @@
 #include "Arduino.h"
 #include "RingBuffer.h"
 
-#define makeKeymap(x) ((byte*)x)
+#define makeKeymap(x) ((byte*)x) ///< cast the passed key characters to bytes
 
-#define KEY_JUST_RELEASED (0)
-#define KEY_JUST_PRESSED (1)
+#define KEY_JUST_RELEASED (0) ///< key has been released
+#define KEY_JUST_PRESSED (1) ///< key has been pressed
 
+/**************************************************************************/
+/*! 
+    @brief  key event structure
+*/
+/**************************************************************************/
 union keypadEvent {
     struct {
         uint8_t KEY: 8; ///< the keycode
@@ -17,6 +22,11 @@ union keypadEvent {
     uint16_t reg; ///< register format
 };
 
+/**************************************************************************/
+/*! 
+    @brief  Class for interfacing GPIO with a diode-multiplexed keypad
+*/
+/**************************************************************************/
 class Adafruit_Keypad {
 public:
     Adafruit_Keypad(byte *userKeymap, byte *row, byte *col, int numRows, int numCols);
