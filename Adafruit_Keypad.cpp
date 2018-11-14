@@ -127,12 +127,13 @@ void Adafruit_Keypad::begin()
     @returns    true if it has been pressed, false otherwise.
 */
 /**************************************************************************/
-bool Adafruit_Keypad::justPressed(byte key)
+bool Adafruit_Keypad::justPressed(byte key, bool clear)
 {
     volatile byte *state = getKeyState(key);
     bool val = (*state & _JUST_PRESSED) != 0;
 
-    *state &= ~(_JUST_PRESSED);
+    if(clear)
+    	*state &= ~(_JUST_PRESSED);
 
     return val;
 }
@@ -202,4 +203,11 @@ keypadEvent Adafruit_Keypad::read()
     k.bit.KEY = _eventbuf.read_char();
 
     return k;
+}
+
+void Adafruit_Keypad::clear()
+{
+	_eventbuf.clear();
+	for(int i=0; i<_numRows*_numCols; i++)
+		*(_keystates + i) = 0;
 }

@@ -35,12 +35,13 @@ public:
 
     void tick();
 
-    bool justPressed(byte key);
+    bool justPressed(byte key, bool clear=true);
     bool justReleased(byte key);
     bool isPressed(byte key);
     bool isReleased(byte key);
     int available();
     keypadEvent read();
+    void clear();
 
 private:
     byte *_userKeymap;
