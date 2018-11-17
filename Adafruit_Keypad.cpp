@@ -76,16 +76,16 @@ void Adafruit_Keypad::tick() {
         delayMicroseconds(_KEYPAD_SETTLING_DELAY);
         for(int c=0; c<_numCols; c++){
             bool pressed = digitalRead(_col[c]);
-            //Serial.print((int)pressed);
+            //Serial.print(pressed?'*':'.');
             volatile byte *state = _keystates + i;
             byte currentState = *state;
-            if(pressed && !(currentState & _KEY_PRESSED)){
+            if (pressed && !(currentState & _KEY_PRESSED)){
                 currentState |= (_JUST_PRESSED | _KEY_PRESSED);
                 evt = KEY_JUST_PRESSED;
                 _eventbuf.store_char(evt);
                 _eventbuf.store_char(*(_userKeymap + i));
             }
-            else if(!pressed && (currentState & _KEY_PRESSED)){
+            else if (!pressed && (currentState & _KEY_PRESSED)){
                 currentState |= _JUST_RELEASED;
                 currentState &= ~(_KEY_PRESSED);
                 evt = KEY_JUST_RELEASED;
