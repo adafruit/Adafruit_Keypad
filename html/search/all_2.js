@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['event',['EVENT',['../unionkeypad_event.html#a1311915500e78569641ee13e9bb65ef5',1,'keypadEvent']]]
+  ['clear',['clear',['../class_adafruit___keypad.html#a7c97236829e64c1f64204d9408b77f9c',1,'Adafruit_Keypad']]]
 ];

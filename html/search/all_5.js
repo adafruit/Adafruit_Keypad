@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['key',['KEY',['../unionkeypad_event.html#ad6bf65295a09e11a08a7d227b61a8a88',1,'keypadEvent']]],
-  ['keypadevent',['keypadEvent',['../unionkeypad_event.html',1,'']]]
+  ['justpressed',['justPressed',['../class_adafruit___keypad.html#a6e913f96d0c444bc29ec7ae30113e8a7',1,'Adafruit_Keypad']]],
+  ['justreleased',['justReleased',['../class_adafruit___keypad.html#a79b6e979b25af758e0a4285c3426af7f',1,'Adafruit_Keypad']]]
 ];

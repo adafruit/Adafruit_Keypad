@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tick',['tick',['../class_adafruit___keypad.html#a982c6c0fa91e2aafd9b87d411a005f71',1,'Adafruit_Keypad']]]
+  ['read',['read',['../class_adafruit___keypad.html#ae2119e671e50be050216691ab6313056',1,'Adafruit_Keypad']]]
 ];

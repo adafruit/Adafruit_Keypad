@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ispressed',['isPressed',['../class_adafruit___keypad.html#aebbcad349e7bd931f204287a763a02cc',1,'Adafruit_Keypad']]],
-  ['isreleased',['isReleased',['../class_adafruit___keypad.html#a6e123087a8059b51913d8186861dcebb',1,'Adafruit_Keypad']]]
+  ['clear',['clear',['../class_adafruit___keypad.html#a7c97236829e64c1f64204d9408b77f9c',1,'Adafruit_Keypad']]]
 ];

@@ -88,9 +88,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___keypad.html#a982c6c0fa91e2aafd9b87d411a005f71">tick</a> ()</td></tr>
 <tr class="memdesc:a982c6c0fa91e2aafd9b87d411a005f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the array of switches and place any events in the buffer. <br /></td></tr>
 <tr class="separator:a982c6c0fa91e2aafd9b87d411a005f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4c4c35e8a530e61c9af9ddb14875ac4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___keypad.html#ab4c4c35e8a530e61c9af9ddb14875ac4">justPressed</a> (byte key)</td></tr>
-<tr class="memdesc:ab4c4c35e8a530e61c9af9ddb14875ac4"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the given key has just been pressed since the last tick.  <a href="#ab4c4c35e8a530e61c9af9ddb14875ac4">More...</a><br /></td></tr>
-<tr class="separator:ab4c4c35e8a530e61c9af9ddb14875ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e913f96d0c444bc29ec7ae30113e8a7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___keypad.html#a6e913f96d0c444bc29ec7ae30113e8a7">justPressed</a> (byte key, bool <a class="el" href="class_adafruit___keypad.html#a7c97236829e64c1f64204d9408b77f9c">clear</a>=true)</td></tr>
+<tr class="memdesc:a6e913f96d0c444bc29ec7ae30113e8a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the given key has just been pressed since the last tick.  <a href="#a6e913f96d0c444bc29ec7ae30113e8a7">More...</a><br /></td></tr>
+<tr class="separator:a6e913f96d0c444bc29ec7ae30113e8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79b6e979b25af758e0a4285c3426af7f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___keypad.html#a79b6e979b25af758e0a4285c3426af7f">justReleased</a> (byte key)</td></tr>
 <tr class="memdesc:a79b6e979b25af758e0a4285c3426af7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the given key has just been released since the last tick.  <a href="#a79b6e979b25af758e0a4285c3426af7f">More...</a><br /></td></tr>
 <tr class="separator:a79b6e979b25af758e0a4285c3426af7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,6 +106,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ae2119e671e50be050216691ab6313056"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionkeypad_event.html">keypadEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___keypad.html#ae2119e671e50be050216691ab6313056">read</a> ()</td></tr>
 <tr class="memdesc:ae2119e671e50be050216691ab6313056"><td class="mdescLeft">&#160;</td><td class="mdescRight">pop the next event off of the FIFO  <a href="#ae2119e671e50be050216691ab6313056">More...</a><br /></td></tr>
 <tr class="separator:ae2119e671e50be050216691ab6313056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c97236829e64c1f64204d9408b77f9c"><td class="memItemLeft" align="right" valign="top"><a id="a7c97236829e64c1f64204d9408b77f9c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___keypad.html#a7c97236829e64c1f64204d9408b77f9c">clear</a> ()</td></tr>
+<tr class="memdesc:a7c97236829e64c1f64204d9408b77f9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear out the event buffer and all the key states. <br /></td></tr>
+<tr class="separator:a7c97236829e64c1f64204d9408b77f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for interfacing GPIO with a diode-multiplexed keypad. </p>
@@ -169,8 +173,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab4c4c35e8a530e61c9af9ddb14875ac4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4c4c35e8a530e61c9af9ddb14875ac4">&#9670;&nbsp;</a></span>justPressed()</h2>
+<a id="a6e913f96d0c444bc29ec7ae30113e8a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e913f96d0c444bc29ec7ae30113e8a7">&#9670;&nbsp;</a></span>justPressed()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,8 +183,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="memname">bool Adafruit_Keypad::justPressed </td>
           <td>(</td>
           <td class="paramtype">byte&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>clear</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -189,6 +203,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>the name of the key to be checked </td></tr>
+    <tr><td class="paramname">clear</td><td>whether to reset the state (default yes) post-check </td></tr>
   </table>
   </dd>
 </dl>
