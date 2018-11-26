@@ -80,13 +80,13 @@ void Adafruit_Keypad::tick() {
             //Serial.print((int)pressed);
             volatile byte *state = _keystates + i;
             byte currentState = *state;
-            if(pressed && !(currentState & _KEY_PRESSED)){
+            if (pressed && !(currentState & _KEY_PRESSED)){
                 currentState |= (_JUST_PRESSED | _KEY_PRESSED);
                 evt = KEY_JUST_PRESSED;
                 _eventbuf.store_char(evt);
                 _eventbuf.store_char(*(_userKeymap + i));
             }
-            else if(!pressed && (currentState & _KEY_PRESSED)){
+            else if (!pressed && (currentState & _KEY_PRESSED)){
                 currentState |= _JUST_RELEASED;
                 currentState &= ~(_KEY_PRESSED);
                 evt = KEY_JUST_RELEASED;
@@ -124,6 +124,7 @@ void Adafruit_Keypad::begin()
 /*! 
     @brief  check if the given key has just been pressed since the last tick.
     @param  key the name of the key to be checked
+    @param  clear whether to reset the state (default yes) post-check
     @returns    true if it has been pressed, false otherwise.
 */
 /**************************************************************************/
@@ -205,6 +206,12 @@ keypadEvent Adafruit_Keypad::read()
     return k;
 }
 
+
+/**************************************************************************/
+/*! 
+    @brief Clear out the event buffer and all the key states
+*/
+/**************************************************************************/
 void Adafruit_Keypad::clear()
 {
 	_eventbuf.clear();
