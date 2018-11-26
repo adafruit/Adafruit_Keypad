@@ -66,16 +66,17 @@ volatile byte *Adafruit_Keypad::getKeyState(byte key)
 /**************************************************************************/
 void Adafruit_Keypad::tick() {
     uint8_t evt;
-    for(int i=0; i<_numRows; i++){
-        digitalWrite(_row[i], LOW);
+    for(int i=0; i<_numCols; i++){
+        digitalWrite(_col[i], HIGH);
     }
 
     int i = 0;
-    for(int r=0; r<_numRows; r++){
-        digitalWrite(_row[r], HIGH);
+    for(int c=0; c<_numCols; c++){
+        digitalWrite(_col[c], LOW);
         delayMicroseconds(_KEYPAD_SETTLING_DELAY);
-        for(int c=0; c<_numCols; c++){
-            bool pressed = digitalRead(_col[c]);
+        for(int r=0; r<_numRows; r++){
+            i = r*_numCols + c;
+            bool pressed = !digitalRead(_row[r]);
             //Serial.print((int)pressed);
             volatile byte *state = _keystates + i;
             byte currentState = *state;
@@ -93,10 +94,9 @@ void Adafruit_Keypad::tick() {
                 _eventbuf.store_char(*(_userKeymap + i));
             }
             *state = currentState;
-            i++;
         }
         //Serial.println("");
-        digitalWrite(_row[r], LOW);
+        digitalWrite(_col[c], HIGH);
     }
 }
 
@@ -110,13 +110,13 @@ void Adafruit_Keypad::begin()
     _keystates = (volatile byte *)malloc(_numRows * _numCols);
     memset((void *)_keystates, 0, _numRows * _numCols);
 
-    for(int i=0; i<_numRows; i++){
-        pinMode(_row[i], OUTPUT);
-        digitalWrite(_row[i], LOW);
+    for(int i=0; i<_numCols; i++){
+        pinMode(_col[i], OUTPUT);
+        digitalWrite(_col[i], HIGH);
     }
 
-    for(int i=0; i<_numCols; i++){
-        pinMode(_col[i], INPUT_PULLDOWN);
+    for(int i=0; i<_numRows; i++){
+        pinMode(_row[i], INPUT_PULLUP);
     }
 }
 
