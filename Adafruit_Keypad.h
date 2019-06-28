@@ -2,7 +2,7 @@
 #define _ADAFRUIT_KEYPAD_H_
 
 #include "Arduino.h"
-#include "RingBuffer.h"
+#include "EventBuffer.h"
 
 #define makeKeymap(x) ((byte*)x) ///< cast the passed key characters to bytes
 
@@ -10,7 +10,7 @@
 #define KEY_JUST_PRESSED (1) ///< key has been pressed
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  key event structure
 */
 /**************************************************************************/
@@ -23,7 +23,7 @@ union keypadEvent {
 };
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  Class for interfacing GPIO with a diode-multiplexed keypad
 */
 /**************************************************************************/
