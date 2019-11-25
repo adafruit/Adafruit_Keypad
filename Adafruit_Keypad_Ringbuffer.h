@@ -18,8 +18,8 @@
 
 #ifdef __cplusplus
 
-#ifndef _RING_BUFFER_
-#define _RING_BUFFER_
+#ifndef _ADAFRUIT_KEYPAD_RING_BUFFER_
+#define _ADAFRUIT_KEYPAD_RING_BUFFER_
 
 #include <stdint.h>
 
@@ -33,7 +33,7 @@
 #endif
 
 template <int N>
-class RingBufferN
+class Adafruit_Keypad_RingbufferN
 {
   public:
     uint8_t _aucBuffer[N] ;
@@ -41,7 +41,7 @@ class RingBufferN
     volatile int _iTail ;
 
   public:
-    RingBufferN( void ) ;
+    Adafruit_Keypad_RingbufferN( void ) ;
     void store_char( uint8_t c ) ;
     void clear();
     int read_char();
@@ -54,18 +54,18 @@ class RingBufferN
     int nextIndex(int index);
 };
 
-typedef RingBufferN<SERIAL_BUFFER_SIZE> RingBuffer;
+typedef Adafruit_Keypad_RingbufferN<SERIAL_BUFFER_SIZE> Adafruit_Keypad_Ringbuffer;
 
 
 template <int N>
-RingBufferN<N>::RingBufferN( void )
+Adafruit_Keypad_RingbufferN<N>::Adafruit_Keypad_RingbufferN( void )
 {
     memset( _aucBuffer, 0, N ) ;
     clear();
 }
 
 template <int N>
-void RingBufferN<N>::store_char( uint8_t c )
+void Adafruit_Keypad_RingbufferN<N>::store_char( uint8_t c )
 {
   int i = nextIndex(_iHead);
 
@@ -81,14 +81,14 @@ void RingBufferN<N>::store_char( uint8_t c )
 }
 
 template <int N>
-void RingBufferN<N>::clear()
+void Adafruit_Keypad_RingbufferN<N>::clear()
 {
   _iHead = 0;
   _iTail = 0;
 }
 
 template <int N>
-int RingBufferN<N>::read_char()
+int Adafruit_Keypad_RingbufferN<N>::read_char()
 {
   if(_iTail == _iHead)
     return -1;
@@ -100,7 +100,7 @@ int RingBufferN<N>::read_char()
 }
 
 template <int N>
-int RingBufferN<N>::available()
+int Adafruit_Keypad_RingbufferN<N>::available()
 {
   int delta = _iHead - _iTail;
 
@@ -111,7 +111,7 @@ int RingBufferN<N>::available()
 }
 
 template <int N>
-int RingBufferN<N>::availableForStore()
+int Adafruit_Keypad_RingbufferN<N>::availableForStore()
 {
   if (_iHead >= _iTail)
     return N - 1 - _iHead + _iTail;
@@ -120,7 +120,7 @@ int RingBufferN<N>::availableForStore()
 }
 
 template <int N>
-int RingBufferN<N>::peek()
+int Adafruit_Keypad_RingbufferN<N>::peek()
 {
   if(_iTail == _iHead)
     return -1;
@@ -129,17 +129,17 @@ int RingBufferN<N>::peek()
 }
 
 template <int N>
-int RingBufferN<N>::nextIndex(int index)
+int Adafruit_Keypad_RingbufferN<N>::nextIndex(int index)
 {
   return (uint32_t)(index + 1) % N;
 }
 
 template <int N>
-bool RingBufferN<N>::isFull()
+bool Adafruit_Keypad_RingbufferN<N>::isFull()
 {
   return (nextIndex(_iHead) == _iTail);
 }
 
-#endif /* _RING_BUFFER_ */
+#endif /* _ADAFRUIT_KEYPAD_RING_BUFFER_ */
 
 #endif /* __cplusplus */

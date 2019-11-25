@@ -2,7 +2,7 @@
 #define _ADAFRUIT_KEYPAD_H_
 
 #include "Arduino.h"
-#include "EventBuffer.h"
+#include "Adafruit_Keypad_Ringbuffer.h"
 
 #define makeKeymap(x) ((byte*)x) ///< cast the passed key characters to bytes
 
@@ -48,7 +48,7 @@ private:
     byte *_row;
     byte *_col;
     volatile byte *_keystates;
-    RingBuffer _eventbuf;
+    Adafruit_Keypad_Ringbuffer _eventbuf;
 
     int _numRows;
     int _numCols;
