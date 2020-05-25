@@ -3,6 +3,7 @@
 
 #include "Adafruit_Keypad_Ringbuffer.h"
 #include "Arduino.h"
+#include <string.h>
 
 #define makeKeymap(x) ((byte *)x) ///< cast the passed key characters to bytes
 
