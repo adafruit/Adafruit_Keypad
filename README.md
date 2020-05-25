@@ -1,4 +1,4 @@
-# Adafruit Keypad Library [![Build Status](https://travis-ci.com/adafruit/Adafruit_Keypad.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_Keypad)
+# Adafruit Keypad Library [![Build Status](https://github.com/adafruit/Adafruit_Keypad/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_Keypad/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit_Keypad/html/index.html)
 
 <img src="https://cdn-shop.adafruit.com/970x728/4020-04.jpg" height="300"/>
 
