@@ -9,7 +9,7 @@
 
 #include "Adafruit_Keypad.h"
 
-// define your specific keypad here via
+// define your specific keypad here via PID
 #define KEYPAD_PID3844
 // define your pins here
 // can ignore ones that don't apply
