@@ -1,16 +1,28 @@
+// Use this example with the Adafruit Keypad products.
+// You'll need to know the Product ID for your keypad.
+// Here's a summary:
+//   * PID3844 4x4 Matrix Keypad
+//   * PID3845 3x4 Matrix Keypad
+//   * PID1824 3x4 Phone-style Matrix Keypad
+//   * PID1332 Membrane 1x4 Keypad
+//   * PID419  Membrane 3x4 Matrix Keypad
+
 #include "Adafruit_Keypad.h"
 
-const byte ROWS = 4; // rows
-const byte COLS = 4; // columns
-//define the symbols on the buttons of the keypads
-char keys[ROWS][COLS] = {
-  {'1','2','3','A'},
-  {'4','5','6','B'},
-  {'7','8','9','C'},
-  {'*','0','#','D'}
-};
-byte rowPins[ROWS] = {5, 4, 3, 2}; //connect to the row pinouts of the keypad
-byte colPins[COLS] = {11, 10, 9, 8}; //connect to the column pinouts of the keypad
+// define your specific keypad here via PID
+#define KEYPAD_PID3844
+// define your pins here
+// can ignore ones that don't apply
+#define R1    2
+#define R2    3
+#define R3    4
+#define R4    5
+#define C1    8
+#define C2    9
+#define C3    10
+#define C4    11
+// leave this import after the above configuration
+#include "keypad_config.h"
 
 //initialize an instance of class NewKeypad
 Adafruit_Keypad customKeypad = Adafruit_Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS);
@@ -18,7 +30,6 @@ Adafruit_Keypad customKeypad = Adafruit_Keypad( makeKeymap(keys), rowPins, colPi
 void setup() {
   Serial.begin(9600);
   customKeypad.begin();
-
 }
 
 void loop() {
