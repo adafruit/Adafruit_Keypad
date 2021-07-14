@@ -86,16 +86,16 @@ void Adafruit_Keypad::tick() {
         evt = KEY_JUST_PRESSED;
         _eventbuf.store_char(evt);
         _eventbuf.store_char(*(_userKeymap + i));
-	_eventbuf.store_char(r);
-	_eventbuf.store_char(c);
+        _eventbuf.store_char(r);
+        _eventbuf.store_char(c);
       } else if (!pressed && (currentState & _KEY_PRESSED)) {
         currentState |= _JUST_RELEASED;
         currentState &= ~(_KEY_PRESSED);
         evt = KEY_JUST_RELEASED;
         _eventbuf.store_char(evt);
         _eventbuf.store_char(*(_userKeymap + i));
-	_eventbuf.store_char(r);
-	_eventbuf.store_char(c);
+        _eventbuf.store_char(r);
+        _eventbuf.store_char(c);
       }
       *state = currentState;
     }
@@ -185,7 +185,9 @@ bool Adafruit_Keypad::isReleased(byte key) {
     @returns    the number of events currently in the buffer
 */
 /**************************************************************************/
-int Adafruit_Keypad::available() { return (_eventbuf.available() / sizeof(keypadEvent)); }
+int Adafruit_Keypad::available() {
+  return (_eventbuf.available() / sizeof(keypadEvent));
+}
 
 /**************************************************************************/
 /*!
