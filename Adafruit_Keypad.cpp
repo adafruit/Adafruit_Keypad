@@ -126,7 +126,7 @@ void Adafruit_Keypad::begin() {
 /**************************************************************************/
 /*!
     @brief  check if the given key has just been pressed since the last tick.
-    @param  key the name of the key to bbee checked
+    @param  key the name of the key to be checked
     @param  clear whether to reset the state (default yes) post-check
     @returns    true if it has been pressed, false otherwise.
 */
