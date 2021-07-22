@@ -19,8 +19,10 @@ union keypadEvent {
   struct {
     uint8_t KEY : 8;   ///< the keycode
     uint8_t EVENT : 8; ///< the edge
+    uint8_t ROW : 8;   ///< the row number
+    uint8_t COL : 8;   ///< the col number
   } bit;               ///< bitfield format
-  uint16_t reg;        ///< register format
+  uint32_t reg;        ///< register format
 };
 
 /**************************************************************************/
